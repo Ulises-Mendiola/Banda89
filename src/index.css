@@ -771,32 +771,6 @@ body {
   user-select: none;
 }
 
-/* ══════════════════════════════════════════
-   MÚSICA – Player Premium (Spotify Style)
-   ══════════════════════════════════════════ */
-.music-player-section {
-  padding: 100px 0;
-  background: var(--bg-deep);
-  position: relative;
-}
-
-.player-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.player-grid {
-  display: grid;
-  grid-template-columns: 450px 1fr;
-  gap: 40px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 146, 10, 0.1);
-  border-radius: 40px;
-  padding: 40px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
-}
 
 @media (max-width: 1024px) {
   .player-grid {
@@ -1176,6 +1150,9 @@ body {
   .highlighted-card {
     padding: 24px 16px;
     border-radius: 20px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
   }
 }
 
@@ -1384,6 +1361,27 @@ body {
   .playlist-panel {
     padding-left: 0;
     margin-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .playlist-item {
+    padding: 12px 14px;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  .item-body .item-title {
+    font-size: 0.95rem;
+  }
+
+  .item-body .item-artist {
+    font-size: 0.8rem;
+  }
+
+  .item-thumb {
+    width: 45px;
+    height: 45px;
   }
 }
 
@@ -1713,11 +1711,21 @@ body {
 }
 
 .reveal-left {
-  transform: translateX(-80px) scale(0.8) rotate(-2deg);
+  transform: translateX(-40px) scale(0.9) rotate(-1deg);
 }
 
 .reveal-right {
-  transform: translateX(80px) scale(0.8) rotate(2deg);
+  transform: translateX(40px) scale(0.9) rotate(1deg);
+}
+
+@media (max-width: 480px) {
+  .reveal-left {
+    transform: translateX(-20px) scale(0.95);
+  }
+
+  .reveal-right {
+    transform: translateX(20px) scale(0.95);
+  }
 }
 
 .scroll-reveal-lateral.visible {
@@ -1808,6 +1816,7 @@ body {
 .about-sticky-section {
   background: var(--bg-deep);
   position: relative;
+  /* overflow-x: hidden removed to preserve position: sticky */
 }
 
 .about-sticky-grid {
@@ -1892,6 +1901,27 @@ body {
   background: transparent;
   position: relative;
   z-index: 5;
+}
+
+.narrative-header {
+  margin-bottom: 60px;
+}
+
+.about-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  color: var(--gold-light);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.about-subtitle-premium {
+  color: var(--gold-dark);
+  font-weight: 700;
+  letter-spacing: 6px;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
 }
 
 .speech-card {
@@ -1982,11 +2012,12 @@ body {
   }
 
   .sticky-image-panel {
-    height: 45vh;
+    height: 40vh;
     position: sticky;
     top: var(--nav-h);
     z-index: 10;
-    margin-bottom: -20px;
+    margin-bottom: 0;
+    /* Remove negative margin to avoid covering content */
     background: var(--bg-deep);
   }
 
@@ -1997,41 +2028,48 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100px;
+    height: 60px;
     background: linear-gradient(to bottom, transparent, var(--bg-deep));
     z-index: 15;
     pointer-events: none;
   }
 
   .narrative-img {
-    inset: 16px;
-    width: calc(100% - 32px);
-    height: calc(100% - 32px);
-    border-radius: 24px;
+    inset: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    border-radius: 20px;
   }
 
   .about-experience-badge-sticky {
-    bottom: 30px;
-    right: 30px;
-    padding: 12px 16px;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 14px;
     border-radius: 12px;
-    transform: scale(0.8);
+    transform: scale(0.75);
     transform-origin: bottom right;
   }
 
   .narrative-content {
-    padding: 40px 20px 100px;
+    padding: 20px 20px 80px;
     margin-top: 0;
   }
 
+  .narrative-header {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding-top: 10px;
+    text-align: center;
+  }
+
   .speech-card {
-    min-height: 50vh;
-    margin-bottom: 60px;
-    padding-top: 20px;
+    min-height: 40vh;
+    margin-bottom: 50px;
+    padding-top: 10px;
   }
 
   .card-number {
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-bottom: -10px;
   }
 }
