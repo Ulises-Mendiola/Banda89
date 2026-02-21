@@ -24,9 +24,9 @@ export default function NowPlayingBar({ cancion, isPlaying, onToggle }) {
             aria-live="polite"
             aria-label={`Reproduciendo: ${cancion?.titulo}`}
         >
-            {/* Thumbnail emoji */}
+            {/* Thumbnail */}
             <div className="np-thumb" aria-hidden="true">
-                <span style={{ fontSize: '1.1rem' }}>{cancion.emoji}</span>
+                <img src={cancion.cover} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }} />
             </div>
 
             {/* Info + progress */}

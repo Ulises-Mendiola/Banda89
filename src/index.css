@@ -11,7 +11,6 @@
   padding: 0;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  max-width: 100%;
 }
 
 :root {
@@ -34,18 +33,16 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   background: var(--bg-deep);
-  overflow-x: hidden;
-  width: 100%;
 }
 
-body,
-#root {
+body {
   font-family: 'Outfit', sans-serif;
   background: var(--bg-deep);
   color: var(--text-main);
-  overflow-x: hidden;
+}
+
+#root {
   width: 100%;
-  position: relative;
 }
 
 /* ── Scrollbar ───────────────────────────── */
@@ -1114,20 +1111,6 @@ body,
   letter-spacing: 2px;
 }
 
-/* Emoji / arte central */
-.song-card__emoji {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -62%);
-  font-size: clamp(2rem, 7.5vw, 3rem);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.55));
-  transition: transform 0.3s ease;
-}
 
 /* ══════════════════════════════════════════
    MÚSICA – Player Premium (Spotify Style)
@@ -1778,7 +1761,6 @@ body,
 .about-sticky-section {
   background: var(--bg-deep);
   position: relative;
-  overflow: clip;
 }
 
 .about-sticky-grid {
@@ -1796,9 +1778,8 @@ body,
 /* 🎨 Panel Izquierdo Sticky */
 .sticky-image-panel {
   position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
   background: transparent;
 }
 

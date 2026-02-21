@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useFadeIn } from '../hooks'
+import reencuentroImg from '../assets/img/1.webp'
 
 /* ── Iconos Decorativos ─────────────────── */
 function StarIcon({ size = 16, color = "var(--gold)" }) {
@@ -28,7 +29,7 @@ const storySections = [
     },
     {
         id: 3,
-        image: 'https://images.unsplash.com/photo-1514525253344-f814d0702117?w=800&q=80',
+        image: reencuentroImg,
         title: 'EL REENCUENTRO',
         subtitle: '2025: Un Nuevo Capítulo',
         content: 'Tras un silencio necesario, regresamos. Banda 89 es la promesa de que lo bueno siempre vuelve. Estamos aquí para demostrar que la verdadera maestría no tiene fecha de caducidad.'

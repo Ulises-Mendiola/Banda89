@@ -46,7 +46,7 @@ export default function Hero() {
                 style={{ transform: `translateY(${offset * -0.3}px)` }}
             >
                 <div className="hero-badge" aria-label="Información de la banda">
-                    <span role="img" aria-label="Trompeta">🎺</span> REGIONAL MEXICANO · DESDE 1989
+                    REGIONAL MEXICANO · DESDE 1989
                 </div>
 
                 <h1 className="hero-title">
@@ -65,14 +65,14 @@ export default function Hero() {
                         className="btn btn-primary"
                         aria-label="Escuchar nuestra música"
                     >
-                        <span role="img" aria-label="Música">🎵</span> Escúchanos
+                        Escúchanos
                     </a>
                     <a
                         href="#eventos"
                         className="btn btn-outline"
                         aria-label="Ver próximas fechas de conciertos"
                     >
-                        <span role="img" aria-label="Calendario">📅</span> Próximas Fechas
+                        Próximas Fechas
                     </a>
                 </div>
             </div>

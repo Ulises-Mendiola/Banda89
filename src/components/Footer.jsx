@@ -85,7 +85,7 @@ export default function Footer() {
             <div className="footer-copy">
                 <div className="footer-copy-divider" aria-hidden="true" />
                 <p>© {new Date().getFullYear()} <strong>Banda 89 El Reencuentro Oficial</strong>. Todos los derechos reservados.</p>
-                <p className="footer-copy-sub">Hecho con <span className="footer-heart">♥</span> en Mazatlán, Sinaloa, México</p>
+                <p className="footer-copy-sub">Hecho con pasión en Mazatlán, Sinaloa, México</p>
                 <div className="footer-dev-signature">
                     Diseñado y Desarrollado por <a href="https://wa.me/525662971609?text=Hola%20que%20tal%2C%20Me%20encant%C3%B3%20la%20experiencia%20visual%20de%20la%20web%20de%20Banda%2089.%20Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20tus%20servicios%20de%20desarrollo." target="_blank" rel="noopener noreferrer">Click & Go</a>
                 </div>
