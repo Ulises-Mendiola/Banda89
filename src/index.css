@@ -1093,12 +1093,21 @@ body {
   padding: 100px 0;
   background: var(--bg-deep);
   position: relative;
+  overflow-x: hidden;
+  /* Evita desplazamiento lateral por animaciones externas */
 }
 
 .player-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+@media (max-width: 480px) {
+  .player-container {
+    padding: 0 8px;
+    /* Maximizar ancho en móviles */
+  }
 }
 
 .player-grid {
@@ -1119,17 +1128,22 @@ body {
 @media (max-width: 1024px) {
   .player-grid {
     grid-template-columns: 1fr;
-    padding: 24px 16px;
+    padding: 20px 14px;
     border-radius: 20px;
     width: 100%;
     margin: 0 auto;
+    gap: 20px;
+    overflow: hidden;
+    /* Bloqueo de desbordamiento en el contenedor principal */
   }
 }
 
 @media (max-width: 480px) {
   .player-grid {
-    padding: 16px;
-    gap: 24px;
+    padding: 12px 8px;
+    /* Menos padding interno para más espacio */
+    gap: 12px;
+    overflow: hidden;
   }
 }
 
@@ -1148,8 +1162,8 @@ body {
 
 @media (max-width: 480px) {
   .highlighted-card {
-    padding: 24px 16px;
-    border-radius: 20px;
+    padding: 20px 12px;
+    border-radius: 18px;
     width: 100%;
     margin: 0 auto;
     max-width: 100%;
@@ -1199,13 +1213,36 @@ body {
   width: 100%;
 }
 
+.track-info {
+  min-height: 110px;
+  /* Reserva espacio para evitar que el reproductor salte */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
 .track-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2rem, 10vw, 3rem);
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
   color: var(--gold-light);
   margin-bottom: 4px;
   letter-spacing: 2px;
-  line-height: 1;
+  line-height: 1.1;
+  /* Control de 2 líneas máximo */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .track-title {
+    font-size: clamp(1.5rem, 7vw, 1.9rem);
+    /* Más compacto para títulos largos */
+    letter-spacing: 1px;
+  }
 }
 
 .track-artist {
@@ -1366,22 +1403,33 @@ body {
 
 @media (max-width: 480px) {
   .playlist-item {
-    padding: 12px 14px;
-    gap: 12px;
-    border-radius: 16px;
+    padding: 10px 12px;
+    gap: 10px;
+    border-radius: 14px;
   }
 
   .item-body .item-title {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.2;
   }
 
   .item-body .item-artist {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .item-thumb {
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+  }
+
+  .item-index {
+    width: 15px;
+    font-size: 0.85rem;
+  }
+
+  .item-duration {
+    font-size: 0.75rem;
   }
 }
 
@@ -1438,7 +1486,12 @@ body {
 .playlist-item:hover {
   background: rgba(212, 146, 10, 0.06);
   border-color: rgba(212, 146, 10, 0.2);
-  transform: translateX(10px);
+}
+
+@media (min-width: 1025px) {
+  .playlist-item:hover {
+    transform: translateX(10px);
+  }
 }
 
 .item-index {
@@ -1710,21 +1763,12 @@ body {
   will-change: transform, opacity;
 }
 
-.reveal-left {
-  transform: translateX(-40px) scale(0.9) rotate(-1deg);
-}
+@media (max-width: 1024px) {
 
-.reveal-right {
-  transform: translateX(40px) scale(0.9) rotate(1deg);
-}
-
-@media (max-width: 480px) {
-  .reveal-left {
-    transform: translateX(-20px) scale(0.95);
-  }
-
+  .reveal-left,
   .reveal-right {
-    transform: translateX(20px) scale(0.95);
+    transform: none !important;
+    /* Desactivar desplazamiento lateral en móvil */
   }
 }
 

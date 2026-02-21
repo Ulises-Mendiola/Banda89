@@ -74,6 +74,7 @@ function Equalizer() {
 
 export default function MusicSection({ onNowPlaying }) {
     const [ref, visible] = useFadeIn(0.12)
+    const [hasEntered, setHasEntered] = useState(false)
     const [highlightedSong, setHighlightedSong] = useState(canciones[0])
     const [playlist, setPlaylist] = useState(canciones.slice(1))
     const [isPlaying, setIsPlaying] = useState(false)
@@ -81,6 +82,13 @@ export default function MusicSection({ onNowPlaying }) {
 
     const audioRef = useRef(null)
     const intervalRef = useRef(null)
+
+    // Sincronizar el estado de entrada para desactivar animaciones laterales tras el primer revelado
+    useEffect(() => {
+        if (visible && !hasEntered) {
+            setHasEntered(true)
+        }
+    }, [visible, hasEntered])
 
     // Sincronizar con el estado global de reproducción (si existe)
     useEffect(() => () => {
@@ -245,7 +253,7 @@ export default function MusicSection({ onNowPlaying }) {
                             {playlist.map((song, idx) => (
                                 <div
                                     key={song.id}
-                                    className={`playlist-item scroll-reveal-lateral reveal-right ${visible ? 'visible' : ''}`}
+                                    className={`playlist-item ${!hasEntered ? 'scroll-reveal-lateral reveal-right' : ''} ${visible ? 'visible' : ''}`}
                                     style={{ transitionDelay: `${(idx + 1) * 0.1}s` }}
                                     onClick={() => handleSwap(song)}
                                 >
