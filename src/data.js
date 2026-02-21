@@ -124,3 +124,9 @@ export const socialLinks = {
     facebook: 'https://facebook.com',
     instagram: 'https://instagram.com',
 }
+
+export const streamingLinks = {
+    spotify: 'https://spotify.com',
+    youtube: 'https://youtube.com',
+    apple: 'https://music.apple.com',
+}

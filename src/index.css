@@ -1327,6 +1327,52 @@ body {
   border-color: var(--gold);
 }
 
+/* 📱 Streaming Buttons */
+.streaming-links-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 146, 10, 0.1);
+}
+
+.streaming-link {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.streaming-link:hover {
+  transform: translateY(-4px);
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.streaming-link.spotify:hover {
+  background: #1DB954;
+  border-color: #1DB954;
+}
+
+.streaming-link.youtube:hover {
+  background: #FF0000;
+  border-color: #FF0000;
+}
+
+
+
+.streaming-link.apple:hover {
+  background: #FA243C;
+  border-color: #FA243C;
+}
+
 /* 📜 Playlist Panel (Derecha) */
 .playlist-panel {
   display: flex;
@@ -1343,7 +1389,8 @@ body {
 
 .playlist-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 3px;
   color: var(--gold-dark);
