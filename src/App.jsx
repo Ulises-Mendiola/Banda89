@@ -1,35 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect, useCallback } from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import MusicSection from './components/MusicSection'
+import Events from './components/Events'
+import About from './components/About'
+import Footer from './components/Footer'
+import { carouselSlides } from './data'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+// ─── Preloader Component ─────────────────────────────
+function Preloader({ hidden }) {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div
+      id="preloader"
+      className={`preloader ${hidden ? 'hidden' : ''}`}
+      role="progressbar"
+      aria-label="Cargando Banda 89…"
+      aria-hidden={hidden}
+    >
+      <div className="preloader-logo">BANDA 89</div>
+      <div className="preloader-bar">
+        <div className="preloader-bar-fill" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
-export default App
+
+// ─── Main App ────────────────────────────────────────
+export default function App() {
+  const [preloaderHidden, setPreloaderHidden] = useState(false)
+  const [nowPlaying, setNowPlaying] = useState(null) // canción activa
+
+  // Preload de imágenes + ocultar preloader de forma garantizada
+  useEffect(() => {
+    const imageUrls = carouselSlides.map((s) => s.src)
+
+    // Iniciar carga en segundo plano
+    imageUrls.forEach((url) => {
+      const img = new Image()
+      img.src = url
+    })
+
+    // Ocultar preloader después de un tiempo razonable para asegurar visibilidad
+    const timer = setTimeout(() => {
+      setPreloaderHidden(true)
+    }, 1200)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Handler para "Now Playing"
+  const handleNowPlaying = useCallback((cancion) => {
+    setNowPlaying(cancion)
+  }, [])
+
+  return (
+    <>
+      {/* ── Preloader ────────────────── */}
+      <Preloader hidden={preloaderHidden} />
+
+      {/* ── Navbar (fijo) ────────────── */}
+      <Navbar />
+
+      {/* ── Contenido principal ──────── */}
+      <main id="main-content" role="main">
+        {/* Hero */}
+        <Hero />
+
+        {/* Música */}
+        <MusicSection onNowPlaying={handleNowPlaying} />
+
+        {/* Próximas fechas */}
+        <Events />
+
+        {/* Nosotros */}
+        <About />
+      </main>
+
+      {/* ── Footer ───────────────────── */}
+      <Footer />
+    </>
+  )
+}
